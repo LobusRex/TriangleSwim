@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriangleSwim", "TriangleSwim\TriangleSwim.csproj", "{9297A4F1-7780-47F8-B058-CA70B46592D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriangleSwim.Domain", "TriangleSwim.Domain\TriangleSwim.Domain.csproj", "{75A57291-6E9E-4B31-8B8E-B2ECD5958EFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriangleSwim.Domain.Tests", "TriangleSwim.Domain.Tests\TriangleSwim.Domain.Tests.csproj", "{3CD64DBC-7987-4F72-8BA0-A8C0BD29ED03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriangleSwim.Application", "TriangleSwim.Application\TriangleSwim.Application.csproj", "{A0BA6898-6F0F-472D-A1FA-549ED610432B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriangleSwim.Application.Tests", "TriangleSwim.Application.Tests\TriangleSwim.Application.Tests.csproj", "{FA2D0A32-450D-42C8-923C-6C742B9BAD79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9297A4F1-7780-47F8-B058-CA70B46592D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9297A4F1-7780-47F8-B058-CA70B46592D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9297A4F1-7780-47F8-B058-CA70B46592D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9297A4F1-7780-47F8-B058-CA70B46592D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75A57291-6E9E-4B31-8B8E-B2ECD5958EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A57291-6E9E-4B31-8B8E-B2ECD5958EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A57291-6E9E-4B31-8B8E-B2ECD5958EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A57291-6E9E-4B31-8B8E-B2ECD5958EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CD64DBC-7987-4F72-8BA0-A8C0BD29ED03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CD64DBC-7987-4F72-8BA0-A8C0BD29ED03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CD64DBC-7987-4F72-8BA0-A8C0BD29ED03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CD64DBC-7987-4F72-8BA0-A8C0BD29ED03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0BA6898-6F0F-472D-A1FA-549ED610432B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0BA6898-6F0F-472D-A1FA-549ED610432B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0BA6898-6F0F-472D-A1FA-549ED610432B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0BA6898-6F0F-472D-A1FA-549ED610432B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA2D0A32-450D-42C8-923C-6C742B9BAD79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA2D0A32-450D-42C8-923C-6C742B9BAD79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA2D0A32-450D-42C8-923C-6C742B9BAD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA2D0A32-450D-42C8-923C-6C742B9BAD79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64D7DCF9-6B10-47F1-9EFD-C157C0D734D5}
+	EndGlobalSection
+EndGlobal
