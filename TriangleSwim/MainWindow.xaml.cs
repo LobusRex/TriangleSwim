@@ -7,6 +7,7 @@ using TriangleSwim.Domain;
 using TriangleSwim.Domain.Boundaries;
 using System.Windows.Shapes;
 using System.Windows.Media;
+using System.Windows.Input;
 
 namespace TriangleSwim;
 
@@ -73,7 +74,13 @@ public partial class MainWindow : Window
 
 	private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 	{
+		MouseDown += MainWindow_MouseDown;
+	}
+
+	private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
+	{
 		timer.Start();
+		MouseDown -= MainWindow_MouseDown;
 	}
 
 	private void Timer_Tick(object? sender, EventArgs e)
