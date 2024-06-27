@@ -36,4 +36,9 @@ public class Distance
 
 		return new Position(X, Y);
 	}
+
+	public Distance Half()
+	{
+		return new Distance(Value / 2);
+	}
 }

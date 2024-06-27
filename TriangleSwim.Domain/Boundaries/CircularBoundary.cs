@@ -31,4 +31,16 @@ public class CircularBoundary : IBoundary
 
         return suggestion;
     }
+
+	public Distance DistanceUntilInside(Position position)
+	{
+		if (position.DistanceTo(Center).IsLongerThan(Radius))
+		{
+			return new Distance(position.DistanceTo(Center).Value - Radius.Value);
+		}
+		else
+		{
+			return new Distance(0);
+		}
+	}
 }

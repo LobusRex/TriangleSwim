@@ -11,4 +11,9 @@ public class NoBoundary : IBoundary
 	{
 		return position;
 	}
+
+	public Distance DistanceUntilInside(Position position)
+	{
+		return new Distance(0);
+	}
 }

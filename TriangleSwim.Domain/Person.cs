@@ -13,6 +13,10 @@ public class Person
 	public Person? FirstPartner { get; private set; } = null;
 	public Person? SecondPartner { get; private set; } = null;
 
+	// Called record because it is just a recort of where it is going.
+	// This is not actually used by the person itself.
+	public Position? TargetRecord { get; private set; } = null;
+
 	public Person(Position position, MovementSpeed movementSpeed, PersonSize size)
 	{
 		Position = position;
@@ -44,19 +48,44 @@ public class Person
 	{
 		// Choose the closest target point.
 		(Position, Position) targets = GetTrianglePoints();
+		Position target1 = targets.Item1;
+		Position target2 = targets.Item2;
 		Position target;
-		if (Position.DistanceTo(targets.Item1).IsLongerThan(Position.DistanceTo(targets.Item2)))
-			target = targets.Item2;
+		if (Position.DistanceTo(target1).IsLongerThan(Position.DistanceTo(target2)))
+		{
+			target = target2;
+
+			if (boundary
+				.DistanceUntilInside(target2)
+				.IsLongerThan(
+					target2
+					.DistanceTo(target1)
+					.Half()
+					.Half()))
+			{
+				target = target1;
+			}
+
+			// if target2.distanceoutsideofboundary > target1.distanceto(target2)/4
+			// target = target1
+		}
 		else
-			target = targets.Item1;
+		{
+			target = target1;
 
-		//if (otherPersons != null)
-		//{
+			if (boundary
+				.DistanceUntilInside(target1)
+				.IsLongerThan(
+					target2
+					.DistanceTo(target1)
+					.Half()
+					.Half()))
+			{
+				target = target2;
+			}
+		}
 
-
-		//	Position.MoveTowards(target, MovementSpeed.GetDistance(timeDelta));
-		//	return;
-		//}
+		TargetRecord = target;
 
 		// Make sure we don't get out of bounds.
 		Position suggestedNewPosition = new(Position.X, Position.Y);

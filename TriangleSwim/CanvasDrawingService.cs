@@ -13,10 +13,11 @@ internal class CanvasDrawingService
 	private ColorScheme ColorScheme { get; }
 	private Dictionary<Person, Ellipse> PersonEllipses { get; } = [];
 	private Dictionary<(Person, Person), Line> PersonConnectionLines { get; } = [];
+	private Dictionary<Person, Ellipse> TargetEllipses { get; } = [];
 	private int TraceDelay { get; }
 
 	private int updateCounter = 0;
-	
+
 
 	public CanvasDrawingService(Canvas canvas, Canvas traceCanvas, CanvasScale canvasScale, ColorScheme colorScheme, int traceDelay)
 	{
@@ -44,6 +45,8 @@ internal class CanvasDrawingService
 		if (person.SecondPartner != null)
 			RegisterPersonConnectionLine(person, person.SecondPartner);
 
+		RegisterPersonTargetPoint(person);
+
 		UpdatePerson(person, false);
 	}
 
@@ -55,11 +58,27 @@ internal class CanvasDrawingService
 		var line = new Line()
 		{
 			Stroke = new SolidColorBrush(Colors.Aqua),
-			StrokeThickness = 2,
+			StrokeThickness = 1,
 		};
 
 		PersonConnectionLines[(owner, partner)] = line;
 		Canvas.Children.Add(line);
+	}
+
+	private void RegisterPersonTargetPoint(Person person)
+	{
+		if (TargetEllipses.ContainsKey(person))
+			throw new InvalidOperationException("This person already has a registered target point.");
+
+		var ellipse2 = new Ellipse()
+		{
+			Fill = new SolidColorBrush(Colors.Black),
+			Width = 4,
+			Height = 4,
+		};
+
+		TargetEllipses[person] = ellipse2;
+		Canvas.Children.Add(ellipse2);
 	}
 
 	public void SetRandomPersonColor(Person person)
@@ -89,22 +108,26 @@ internal class CanvasDrawingService
 		{
 			PersonConnectionLines.TryGetValue((person, person.FirstPartner), out Line? firstLine);
 			if (firstLine != null)
-				firstLine.Stroke = new SolidColorBrush(firstPartnerColor);
+				firstLine.Stroke = new SolidColorBrush(firstPartnerColor.WithOpacity(128));
 		}
 
 		if (person.SecondPartner != null)
 		{
 			PersonConnectionLines.TryGetValue((person, person.SecondPartner), out Line? secondLine);
 			if (secondLine != null)
-				secondLine.Stroke = new SolidColorBrush(secondPartnerColor);
+				secondLine.Stroke = new SolidColorBrush(secondPartnerColor.WithOpacity(128));
 		}
+
+		TargetEllipses.TryGetValue(person, out Ellipse? targetEllipse);
+		if (targetEllipse != null)
+			targetEllipse.Fill = new SolidColorBrush(personColor.WithOpacity(128)); //new SolidColorBrush(personColor.WithOpacity(255));
 	}
 
 	public void UpdatePersons(Person[] persons)
 	{
 		foreach (var person in persons)
 		{
-			UpdatePerson(person, updateCounter % TraceDelay == 0);
+			UpdatePerson(person, /*updateCounter % TraceDelay == 0*/false);
 		}
 		updateCounter++;
 	}
@@ -153,7 +176,17 @@ internal class CanvasDrawingService
 			}
 		}
 
+		if (person.TargetRecord != null)
+		{
+			TargetEllipses.TryGetValue(person, out Ellipse? targetEllipses);
 
+			if (targetEllipses != null)
+			{
+				CanvasPosition targetPosition = CanvasScale.PositionToScale(person.TargetRecord);
+
+				Canvas.SetEllipsePosition(targetEllipses, targetPosition);
+			}
+		}
 
 		//if (person.SecondPartner != null)
 		//{

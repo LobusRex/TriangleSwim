@@ -5,6 +5,8 @@ using TriangleSwim.Domain.PersonSelectionSchemes;
 using System.Windows.Threading;
 using TriangleSwim.Domain;
 using TriangleSwim.Domain.Boundaries;
+using System.Windows.Shapes;
+using System.Windows.Media;
 
 namespace TriangleSwim;
 
@@ -40,8 +42,16 @@ public partial class MainWindow : Window
 			canvas,
 			traceCanvas,
 			new CanvasScale(30),
-			new ColorScheme(new Random(3)),
+			new ColorScheme(
+				new Random(4)),
 			50);
+
+		var dot = new Ellipse()
+		{
+			Fill = new SolidColorBrush(Colors.Black),
+			Width = 50,
+			Height = 50,
+		};
 
 		foreach (var person in swimService.Persons)
 		{

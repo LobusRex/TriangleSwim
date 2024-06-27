@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace TriangleSwim;
@@ -35,5 +36,10 @@ internal static class Extensions
 
 		Canvas.SetLeft(line, canvas.Width / 2);
 		Canvas.SetTop(line, canvas.Height / 2);
+	}
+
+	public static Color WithOpacity(this Color color, byte opacity)
+	{
+		return Color.FromArgb(opacity, color.R, color.G, color.B);
 	}
 }

@@ -13,7 +13,7 @@ internal class ColorScheme
 	
 	public Color RandomColor => VisibleColors[Random.Next(VisibleColors.Length)];
 
-	private Color[] VisibleColors =>
+	public Color[] VisibleColors =>
 	[
 		Colors.Black,
 		Colors.Navy,
@@ -74,11 +74,8 @@ internal class ColorScheme
 		Colors.Sienna,
 		Colors.Brown,
 		Colors.DarkGray,
-		Colors.LightBlue,
 		Colors.GreenYellow,
-		Colors.PaleTurquoise,
 		Colors.LightSteelBlue,
-		Colors.PowderBlue,
 		Colors.Firebrick,
 		Colors.DarkKhaki,
 		Colors.MediumOrchid,
@@ -91,22 +88,16 @@ internal class ColorScheme
 		Colors.Peru,
 		Colors.Chocolate,
 		Colors.Tan,
-		Colors.LightGray,
-		Colors.Thistle,
 		Colors.Orchid,
 		Colors.Goldenrod,
 		Colors.Crimson,
-		Colors.Gainsboro,
 		Colors.Plum,
 		Colors.BurlyWood,
-		Colors.LightCyan,
-		Colors.Lavender,
 		Colors.DarkOrange,
 		Colors.HotPink,
 		Colors.SandyBrown,
 		Colors.Salmon,
 		Colors.LightCoral,
-		Colors.PaleGoldenrod,
 		Colors.Violet,
 		Colors.YellowGreen,
 		Colors.DarkTurquoise,
@@ -121,7 +112,6 @@ internal class ColorScheme
 		Colors.SteelBlue,
 		Colors.Turquoise,
 		Colors.Violet,
-		Colors.Wheat,
 		Colors.YellowGreen
 	];
 }
