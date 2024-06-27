@@ -1,4 +1,5 @@
 ﻿using TriangleSwim.Domain;
+using TriangleSwim.Domain.Boundaries;
 using TriangleSwim.Domain.PersonSelectionSchemes;
 using TriangleSwim.Domain.PositionSchemes;
 
@@ -7,7 +8,7 @@ namespace TriangleSwim.Application;
 public class SwimService
 {
 	public Person[] Persons { get; }
-	public CircularBoundary Boundary { get; }
+	public IBoundary Boundary { get; }
 
 	public SwimService(
 		int personCount,
@@ -16,7 +17,7 @@ public class SwimService
 		IPersonSelectionScheme secondPartnerSelectionScheme,
 		MovementSpeed movementSpeed,
 		PersonSize personSize,
-		CircularBoundary boundary)
+		IBoundary boundary)
 	{
 		Persons = new Person[personCount];
 		Boundary = boundary;

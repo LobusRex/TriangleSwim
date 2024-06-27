@@ -4,6 +4,7 @@ using TriangleSwim.Domain.PositionSchemes;
 using TriangleSwim.Domain.PersonSelectionSchemes;
 using System.Windows.Threading;
 using TriangleSwim.Domain;
+using TriangleSwim.Domain.Boundaries;
 
 namespace TriangleSwim;
 
@@ -26,7 +27,7 @@ public partial class MainWindow : Window
 		swimService = new SwimService(
 			10,
 			new CircularPositionScheme(
-				new Radius(10)),
+				new Radius(8)),
 			new PersonToTheLeftSelectionScheme(),
 			new RandomPersonSelectionScheme(
 				new Random()),

@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+﻿using TriangleSwim.Domain.Boundaries;
 using TriangleSwim.Domain.PersonSelectionSchemes;
 
 namespace TriangleSwim.Domain;
@@ -40,7 +40,7 @@ public class Person
 		SecondPartner = newPartner;
 	}
 
-	public void Update(TimeSpan timeDelta, CircularBoundary boundary)
+	public void Update(TimeSpan timeDelta, IBoundary boundary, Person[]? otherPersons=null) // this should not be nullable later.
 	{
 		// Choose the closest target point.
 		(Position, Position) targets = GetTrianglePoints();
@@ -50,12 +50,20 @@ public class Person
 		else
 			target = targets.Item1;
 
+		//if (otherPersons != null)
+		//{
+
+
+		//	Position.MoveTowards(target, MovementSpeed.GetDistance(timeDelta));
+		//	return;
+		//}
+
 		// Make sure we don't get out of bounds.
 		Position suggestedNewPosition = new(Position.X, Position.Y);
 		suggestedNewPosition.MoveTowards(target, MovementSpeed.GetDistance(timeDelta));
 		if (!boundary.PermitsPosition(suggestedNewPosition, Size))
 			//return;
-			target = boundary.GetSuggestion(suggestedNewPosition, Size); // Or target?
+			target = boundary.GetPermittedAlternativeTo(suggestedNewPosition, Size); // Or target?
 
 		// Make the move.
 		Position.MoveTowards(target, MovementSpeed.GetDistance(timeDelta));

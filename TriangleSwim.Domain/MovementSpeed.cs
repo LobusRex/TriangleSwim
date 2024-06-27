@@ -2,17 +2,17 @@
 
 public class MovementSpeed
 {
-	public double Value { get; }
+	public double DistancePerSecond { get; }
 
-	public MovementSpeed(double value)
+	public MovementSpeed(double distancePerSecond)
 	{
-		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(value, nameof(value));
+		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(distancePerSecond, nameof(distancePerSecond));
 
-		Value = value;
+		DistancePerSecond = distancePerSecond;
 	}
 
 	public Distance GetDistance(TimeSpan time)
 	{
-		return new Distance(Value * time.TotalSeconds);
+		return new Distance(DistancePerSecond * time.TotalSeconds);
 	}
 }
